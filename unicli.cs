@@ -143,11 +143,7 @@ public class unicli
 
             unicliConfig conf = loadUnicliConfig();
 
-            ProcessStartInfo startInfo = new ProcessStartInfo
-            {
-                FileName = conf.textEditorCmd,
-                UseShellExecute = false
-            };
+            ProcessStartInfo startInfo;
 
             string farg = ctx.Args[0].ToLower();
 
@@ -199,7 +195,34 @@ public class unicli
                 );
             }
 
-            startInfo.ArgumentList.Add(argument);
+            if (conf.textEditorCmd.Contains("%s"))
+            {
+                string editorCommand =
+                    conf.textEditorCmd.Replace(
+                        "%s",
+                        "\"" + argument.Replace("\"", "\\\"") + "\""
+                    );
+
+                startInfo = new ProcessStartInfo
+                {
+                    FileName = conf.shell,
+                    UseShellExecute = false
+                };
+
+                startInfo.ArgumentList.Add(conf.shellExecArgs);
+                startInfo.ArgumentList.Add(editorCommand);
+            }
+            else
+            {
+                startInfo = new ProcessStartInfo
+                {
+                    FileName = conf.textEditorCmd,
+                    UseShellExecute = false
+                };
+
+                startInfo.ArgumentList.Add(argument);
+            }
+
 
             Process? process = Process.Start(startInfo);
 

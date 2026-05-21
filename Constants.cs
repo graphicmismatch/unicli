@@ -2,8 +2,8 @@ namespace unicli;
 
 public static class Constants
 {
-    public const string ApplicationName = "unicli2";
-    public const string Version = "v0.0.1";
+    public const string ApplicationName = "unicli";
+    public const string Version = "v1.0";
 
     public const string HelpText = """
                                    Usage:
@@ -12,9 +12,6 @@ public static class Constants
                                          
                                      unicli version
                                          Displays the current version.
-                                         
-                                     unicli checkupdate
-                                         Checks for updates.
                                          
                                      unicli editors
                                          List installed Unity editor versions.

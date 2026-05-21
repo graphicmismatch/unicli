@@ -18,6 +18,18 @@ public struct ArgContext
     {
         List<string> _args = new List<string>();
         List<string> _flags = new List<string>();
+        
+        if (args == null)
+        {
+            Args = _args.ToArray();
+            Flags = _flags.ToArray();
+            ArgCount = 0;
+            FlagCount = 0;
+            executionPath = Environment.CurrentDirectory;
+            return;
+        }
+
+        
         foreach (var arg in args)
         {
             if (arg.StartsWith("--"))
@@ -27,11 +39,11 @@ public struct ArgContext
             }
             else
             {
-                _args.Add(arg.ToLower().Trim());
+                _args.Add(arg.Trim());
                 ArgCount++;
             }
         }
-        Args = args.ToArray();
+        Args = _args.ToArray();
         Flags = _flags.ToArray();
         executionPath = Environment.CurrentDirectory;
     }
