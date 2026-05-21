@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uni-cli", "uni-cli.csproj", "{D5729FF2-A90F-48AE-93AA-BB2278389534}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "unicli", "unicli.csproj", "{D5729FF2-A90F-48AE-93AA-BB2278389534}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
