@@ -3,16 +3,17 @@ using System.Text.Json.Serialization;
 
 namespace unicli;
 
-[System.Serializable]
+[Serializable]
 public struct unicliConfig
 {
-    public string editorInstallationPath { get; set;}
-    public string textEditorCmd { get; set;}
-    public string[] projectPaths { get; set;}
+    public string editorInstallationPath { get; set; }
+    public string textEditorCmd { get; set; }
+    public string[] projectPaths { get; set; }
     public string shell { get; set; }
-    public string shellExecArgs { get; set;}
-    public string shellSourceCommand {get; set; }
-
+    public string shellExecArgs { get; set; }
+    public string shellSourceCommand { get; set; }
+    
+    public string keyToolPath { get; set; }
     public override string ToString()
     {
         return JsonSerializer.Serialize(this);
@@ -20,7 +21,7 @@ public struct unicliConfig
 
     public static unicliConfig getDefaultConfig()
     {
-        unicliConfig def = new unicliConfig();
+        var def = new unicliConfig();
         if (OperatingSystem.IsLinux())
         {
             def.editorInstallationPath = "~/Unity/Hub/Editor";
@@ -29,6 +30,7 @@ public struct unicliConfig
             def.shell = "bash";
             def.shellExecArgs = "-c";
             def.shellSourceCommand = "source";
+            def.keyToolPath = "";
             return def;
         }
         else if (OperatingSystem.IsMacOS())
@@ -39,9 +41,10 @@ public struct unicliConfig
             def.shell = "zsh";
             def.shellExecArgs = "-c";
             def.shellSourceCommand = "source";
+            def.keyToolPath = "";
             return def;
         }
-        else if(OperatingSystem.IsWindows())
+        else if (OperatingSystem.IsWindows())
         {
             def.editorInstallationPath = "C:/Program Files/Unity/Hub/Editor";
             def.textEditorCmd = "notepad %s";
@@ -49,13 +52,15 @@ public struct unicliConfig
             def.shell = "powershell.exe";
             def.shellExecArgs = "-Command";
             def.shellSourceCommand = ".";
+            def.keyToolPath = "";
             return def;
         }
         else
         {
-            Console.Error.WriteLine("Unsupported Platform: "+ Environment.OSVersion.Platform);
+            Console.Error.WriteLine("Unsupported Platform: " + Environment.OSVersion.Platform);
             Environment.Exit(1);
         }
+
         return def;
     }
 }

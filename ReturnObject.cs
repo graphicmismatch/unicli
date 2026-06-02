@@ -2,7 +2,11 @@ namespace unicli;
 
 public enum ReturnCode
 {
-    Empty, Success, Error, SuccessWithMessage, SuccessWithWarning
+    Empty,
+    Success,
+    Error,
+    SuccessWithMessage,
+    SuccessWithWarning
 }
 
 public struct ReturnObject
@@ -10,8 +14,8 @@ public struct ReturnObject
     public ReturnCode Code;
     public Type? ReturnType;
     public object? ReturnData;
-    
-    public bool IsSuccess  => (Code != ReturnCode.Error);
+
+    public bool IsSuccess => Code != ReturnCode.Error;
 
     public ReturnObject()
     {
@@ -19,11 +23,11 @@ public struct ReturnObject
         ReturnType = null;
         ReturnData = null;
     }
+
     public ReturnObject(ReturnCode code, Type returnType, object returnData)
     {
         Code = code;
         ReturnType = returnType;
         ReturnData = returnData;
     }
-    
 }

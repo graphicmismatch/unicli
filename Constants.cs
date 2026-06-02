@@ -6,33 +6,52 @@ public static class Constants
     public const string Version = "v1.0";
 
     public const string HelpText = """
+                                   Verbs: 
+                                        help, version, editors, projects, projectinfo, 
+                                        open, add, config, getcertfingerprint
+                                        
                                    Usage:
-                                     unicli help 
-                                         Displays this help text.
+                                        unicli help 
+                                            Displays this help text.
                                          
-                                     unicli version
-                                         Displays the current version.
+                                        unicli version
+                                            Displays the current version.
                                          
-                                     unicli editors
-                                         List installed Unity editor versions.
-                                   
-                                     unicli projects
-                                         List Unity projects.
+                                        unicli editors
+                                            List installed Unity editor versions.
+
+                                        unicli projects
+                                            List Unity projects.
                                          
-                                     unicli open <project_name> [extra args]
-                                         Open project.
+                                        unicli projectinfo <project_name>
+                                            Lists information about the Unity project.      
                                          
-                                     unicli open <project_name> <editor-version> [extra args]
-                                         Open project with specific Unity editor.
+                                        unicli open <project_name> [extra args]
+                                            Open project.
+                                         
+                                        unicli open <project_name> <editor_version> [extra args]
+                                            Open project with specific Unity editor.
+
+                                        unicli add <folder>
+                                            Add a project scan directory or project.
+                                         
+                                        unicli config unicli
+                                            Edit unicli configuration.
+                                       
+                                        unicli config global
+                                            Edit global configuration.
+
+                                        unicli config <editor_version>
+                                            Edit editor-specific configuration.
+                                            
+                                        unicli getcertfingerprint <project_name> <keystore_name> <alias>
+                                            Get the SHA256 fingerprint from a keystore. A password prompt is provided.
                                    
-                                     unicli add <folder>
-                                         Add a project scan directory or project.
+                                        unicli getcertfingerprint <project_name> <keystore_name> <alias> <keystore_and_alias_password>
+                                            Get the SHA256 fingerprint from a keystore. The same password is used for both the keystore and the key.
                                    
-                                     unicli config global
-                                         Edit global configuration.
-                                   
-                                     unicli config <editor-version>
-                                         Edit editor-specific configuration.
+                                        unicli getcertfingerprint <project_name> <keystore_name> <alias> <keystore_password> <key_password>
+                                            Get the SHA256 fingerprint from a keystore.
                                    
                                    Examples:
                                      unicli editors
