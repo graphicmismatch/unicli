@@ -32,7 +32,7 @@ internal class Program
         var res = (ReturnObject?)method.Invoke(unicliInst, parameters);
         if (res is not null && res?.Code != ReturnCode.Empty && res?.Code != ReturnCode.Success)
         {
-            Console.WriteLine("\n\n==================\n");
+            Console.WriteLine("\n==================\n");
             if (res?.Code == ReturnCode.SuccessWithMessage)
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
